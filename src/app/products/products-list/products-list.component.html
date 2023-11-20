@@ -1,0 +1,28 @@
+<div *ngIf="(products$ |async) == null" class="container">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div *ngIf="(products$ |async) != null" class="container">
+  <button [disabled]="disableButton" class="btn btn-danger" (click)="loadMore()">Load More</button>
+
+  <div class="alert alert-info">
+    Nombre de produits: {{ (products$ |async)?.length }}
+  </div>
+  <div class="row">
+    <div class="col-4" *ngFor="let product of products$ | async">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src={{product.thumbnail}} class="card-img" style="height: 100px">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.title}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

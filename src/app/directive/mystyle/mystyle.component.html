@@ -1,0 +1,25 @@
+<br>
+<p [ngStyle]="{
+  'color' : color,
+  'font-family' : font,
+  'font-size' : size,
+  }"
+>Life made easier with ngStyle!!</p>
+<div class="row">
+  <div class="col-md-4 col-sm-4">
+    <input type="text" [(ngModel)]="color" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <input type="number" #sizeval (change)="sizechanged(sizeval.value)" class="form-control">
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <select #selectfont (change)="selectedfont(selectfont)" class="form-control">
+      <option>Arial</option>
+      <option>Garamond</option>
+      <option>Verdana</option>
+    </select>
+  </div>
+</div>
+<br>
+<br>
+<input class="form-control" type="text" appRainbow>

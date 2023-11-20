@@ -1,0 +1,14 @@
+<input [formControl]="inputOne" (blur)="changeStreamOneValue()" type="number" class="form-control" />
+<button class="btn btn-danger"  (click)="endFirstStream()">Terminate Stream 1</button>
+
+<input [formControl]="inputTwo" (blur)="changeStreamTwoValue()" type="number" class="form-control" />
+<button class="btn btn-danger"  (click)="endSecondStream()">Terminate Stream 2</button>
+
+<br />
+<div class="card text-left">
+  <div class="card-header">
+    <p>Merge : {{ mergedValue$ | async }}</p>
+    <p>Scan : {{ scanValue$ | async }}</p>
+    <p>Reduce : {{ reduceValue$ | async }}</p>
+  </div>
+</div>

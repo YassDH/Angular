@@ -1,0 +1,8 @@
+<div *ngIf="showButtons" class=" flex">
+  <button class="btn btn-secondary me-2 my-2" (click)="setJunior()">Juniors</button>
+  <button class="btn btn-secondary ms-2 my-2" (click)="setSenior()">Seniors</button>
+</div>
+<ol class="list-group" *ngFor="let cv of personnes, let i = index">
+  <app-cvitem [bgintcolor]="i" (sendedperson)="sendperson($event)" [personne]="cv"/>
+</ol>
+

@@ -1,0 +1,21 @@
+<form #formulaire="ngForm" >
+  <label for="name">Name</label>
+  <input #namemodel="ngModel" required id="name" type="text" ngModel name="name" class="form-control">
+  <div class="alert alert-danger" *ngIf="namemodel.invalid && namemodel.touched">Name field can't be empty.</div>
+  <label for="firstname">FirstName</label>
+  <input required id="firstname" type="text" #firstnamemodel="ngModel" ngModel name="firstname" class="form-control">
+  <div class="alert alert-danger" *ngIf="firstnamemodel.invalid && firstnamemodel.touched">FirstName field can't be empty.</div>
+  <label for="job">Job</label>
+  <input required id="job" type="text" ngModel name="job" class="form-control" #jobmodel ="ngModel">
+  <div class="alert alert-danger" *ngIf="jobmodel.invalid && jobmodel.touched">Job field can't be empty.</div>
+  <label for="age">Age</label>
+  <input required min="0" max="120" id="age" type="number" ngModel name="age" #agemodel="ngModel" class="form-control">
+  <div class="alert alert-danger" *ngIf="agemodel.invalid && agemodel.touched">Age must be between 0 and 120.</div>
+  <label for="description">Description</label>
+  <input required id="description" type="text" #descriptionmodel="ngModel" ngModel name="description" class="form-control">
+  <div class="alert alert-danger" *ngIf="descriptionmodel.invalid && descriptionmodel.touched">Description field can't be empty.</div>
+  <label for="path">Path</label>
+  <input id="path" type="text" ngModel name="path" class="form-control">
+  <button class="btn btn-primary" [disabled]="formulaire.invalid" (click)="createcv(formulaire)">Confirm</button>
+</form>
+

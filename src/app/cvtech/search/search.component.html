@@ -1,0 +1,7 @@
+<div class="bg-white">
+  <input [formControl]="name" type="text" class="form-control" />
+  <app-cvlist 
+  (sendedperson)="redirectToDetails($event)"
+  [personnes]="personnes$ | async" 
+  [showButtons]="false"/>
+</div>

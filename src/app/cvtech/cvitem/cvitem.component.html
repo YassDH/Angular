@@ -1,0 +1,10 @@
+<li
+  [ngClass]="{
+  'oddcolor' : bgintcolor%2 === 1,
+  'evencolor' : bgintcolor%2 === 0,
+}"
+  class="list-group-item" (click)="sendperson()">
+  <img src="assets/images/{{personne.path|defaultthumbnail}}" width="50px"
+       height="50px">  {{personne.name | titlecase}} {{personne.firstname | titlecase}}
+</li>
+
