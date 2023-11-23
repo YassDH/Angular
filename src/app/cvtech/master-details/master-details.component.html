@@ -1,5 +1,5 @@
 <div class="row">
-  <app-cvlist [showButtons]="false" [personnes]="personnes$ | async" (sendedperson)="showDetails($event)" />
+  <app-cvlist [showButtons]="false" [personnes]="personnes$ | async" />
 </div>
 <div class="row" >
     <router-outlet></router-outlet>

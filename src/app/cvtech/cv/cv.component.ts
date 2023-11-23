@@ -32,8 +32,4 @@ export class CvComponent{
       this.filtredList = this.personnes.filter((person)=> person.age >= 40)
     }
   }
-
-  sendperson(item : Person){
-    this.personne = item;
-  }
 }

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
-import { BehaviorSubject, Observable, concatMap, scan } from 'rxjs';
+import { BehaviorSubject, Observable, concatMap, scan, takeUntil } from 'rxjs';
 import { Product } from 'src/app/Model/Product';
 
 @Component({
@@ -13,8 +13,6 @@ export class ProductsListComponent {
   productService = inject(ProductServiceService);
   products$ = new Observable<Product[]>();
   numberElements$ = new BehaviorSubject<number>(0);
-
-  loading = true;
 
   constructor() {
     this.products$ = this.numberElements$.pipe(

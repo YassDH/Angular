@@ -1,4 +1,5 @@
-<div class="col-md-12 col-sm-6">
+<div *ngIf="personne$ | async as personne" class="col-md-12 col-sm-6">
+  <div *ngIf="personne.id > 0">
   <div class="card-container">
     <div class="card">
       <div class="front">
@@ -50,10 +51,11 @@
           </div>
         </div>
         <div class="footer">
-          <button class="btn btn-danger" (click)="embaucher()">Embaucher</button>
-          <button class="btn btn-primary" (click)="getmoreinfo()">Details</button>
+          <button class="btn btn-danger" (click)="embaucher(personne)">Embaucher</button>
+          <button class="btn btn-primary" (click)="getmoreinfo(personne.id)">Details</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

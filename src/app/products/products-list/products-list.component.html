@@ -1,4 +1,4 @@
-<div *ngIf="(products$ |async) == null" class="container">
+<div *ngIf="products$ |async as products" class="container">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>

@@ -1,10 +1,10 @@
 <app-search></app-search>
 <div class="row">
   <div class="col-md-6 col-sm-4" >
-    <app-cvlist (sendedperson)="sendperson($event)" (buttonClicked)="filterItems($event)" [personnes]="filtredList"/>
+    <app-cvlist (buttonClicked)="filterItems($event)" [personnes]="filtredList"/>
   </div>
   <div class="col-md-6 col-sm-4" >
-    <app-cvdetail *ngIf="personne" [personne]="personne"/>
+    <app-cvdetail />
   </div>
 </div>
 

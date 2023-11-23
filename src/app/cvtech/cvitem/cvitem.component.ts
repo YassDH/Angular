@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, inject} from '@angular/core';
 import {Person} from "../../Model/Person";
+import { CvService } from '../cv.service';
 
 @Component({
   selector: 'app-cvitem',
@@ -7,15 +8,13 @@ import {Person} from "../../Model/Person";
   styleUrls: ['./cvitem.component.css']
 })
 export class CvitemComponent {
+  cvService = inject(CvService)
   @Input()
   personne : Person = new Person();
-  @Output()
-  sendedperson = new EventEmitter();
   @Input()
   bgintcolor:number = 0;
 
-
-  sendperson(){
-    this.sendedperson.emit(this.personne);
+  sendperson(){    
+    this.cvService.changeSelectedPerson(this.personne)
   }
 }

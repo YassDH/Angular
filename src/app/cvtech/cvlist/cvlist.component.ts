@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, inject} from '@angular/core';
 import {Person} from "../../Model/Person";
+import { CvService } from '../cv.service';
 
 @Component({
   selector: 'app-cvlist',
@@ -12,18 +13,14 @@ export class CvlistComponent {
   @Input()
   personnes : Person[] | null = [];
   @Output()
-  sendedperson = new EventEmitter();
-  @Output()
   buttonClicked = new EventEmitter();
+
+  cvServie = inject(CvService)
 
   setJunior(){
     this.buttonClicked.emit(true)
   }
   setSenior(){
     this.buttonClicked.emit(false)
-  }
-  sendperson(item : Person){
-    console.log(item)
-    this.sendedperson.emit(item);
   }
 }

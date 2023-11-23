@@ -3,6 +3,6 @@
   <button class="btn btn-secondary ms-2 my-2" (click)="setSenior()">Seniors</button>
 </div>
 <ol class="list-group" *ngFor="let cv of personnes, let i = index">
-  <app-cvitem [bgintcolor]="i" (sendedperson)="sendperson($event)" [personne]="cv"/>
+  <app-cvitem [bgintcolor]="i"  [personne]="cv"/>
 </ol>
 

@@ -2,6 +2,8 @@ import {Component, inject, Input} from '@angular/core';
 import {Person} from "../../Model/Person";
 import {EmbaucherService} from "../embaucher.service";
 import {Router} from "@angular/router";
+import { CvService } from '../cv.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cvdetail',
@@ -9,18 +11,22 @@ import {Router} from "@angular/router";
   styleUrls: ['./cvdetail.component.css']
 })
 export class CvdetailComponent {
-  @Input()
-  personne : Person = new Person();
+  cvService = inject(CvService)
+  personne$ : Observable<Person>
+  
+
   constructor() {
-  }
-  embaucheservice = inject(EmbaucherService)
-  route = inject(Router)
-  embaucher(){
-    this.embaucheservice.embaucherPersonne(this.personne);
+    this.personne$ = this.cvService.getSelectedPersonListner$()
   }
 
-  getmoreinfo(){
-    this.route.navigate(['cv/detail',this.personne.id]);
+  embaucheservice = inject(EmbaucherService)
+  route = inject(Router)
+  embaucher(person : Person){
+    this.embaucheservice.embaucherPersonne(person);
+  }
+
+  getmoreinfo(id : number){
+    this.route.navigate(['cv/detail',id ]);
   }
 
 }

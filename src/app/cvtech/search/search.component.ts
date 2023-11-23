@@ -25,8 +25,12 @@ export class SearchComponent {
     );
   }
 
-  redirectToDetails(personne: Person){
-    this.router.navigate(['cv/detail', personne.id])
+  redirectToDetails(){
+    this.cvService.getSelectedPersonListner$().pipe(
+      map((personne) =>{
+        this.router.navigate(['cv','detail', personne.id])
+      })
+    )
   }
 
 }
