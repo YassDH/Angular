@@ -16,7 +16,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DetailComponent } from './cvtech/detail/detail.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AddComponent } from './cvtech/add/add.component';
-import { LoginComponent } from './login/login.component';
 import { SliderComponent } from './slider/slider.component';
 import { HttpComponent } from './http/http.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -45,7 +44,6 @@ import { MergeComponent } from './merge/merge.component';
     DetailComponent,
     NotfoundComponent,
     AddComponent,
-    LoginComponent,
     SliderComponent,
     HttpComponent,
     SearchComponent,

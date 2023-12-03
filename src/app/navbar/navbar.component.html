@@ -9,7 +9,9 @@
       <a class="nav-item nav-link" [routerLink]="['cv','list']" routerLinkActive="active">Master Details</a>
       <a class="nav-item nav-link" [routerLink]="['products']" routerLinkActive="active">Products</a>
       <a class="nav-item nav-link" [routerLink]="['merge']" routerLinkActive="active">Merge</a>
-      <a class="nav-item nav-link" [routerLink]="['login']" routerLinkActive="active">Login</a>
+      <a class="nav-item nav-link" [hidden]="loggedIn" [routerLink]="['login']" routerLinkActive="active">Login</a>
+      <a class="nav-item nav-link" [hidden]="!loggedIn" [routerLink]="['cv/add']" routerLinkActive="active">Add CV</a>
+      <button class="nav-item nav-link" (click)="logout()" [hidden]="!loggedIn" >Logout</button>
       <a class="nav-item nav-link" [routerLink]="['style']" routerLinkActive="active">Style</a>
     </div>
   </div>
