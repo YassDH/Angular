@@ -22,14 +22,13 @@ export class AddComponent implements CanComponentDeactivate {
   canDeactivate(){
     let empty = true
     let values = Object.values(this.formulaire.value)
-
     for(const value of values){
       if(value){
         empty = false
         break
       }
     }
-    if (!empty) {
+    if (!empty && !this.formulaire.submitted) {
       return window.confirm(
         'You have unsaved changes. Do you really want to leave?'
       );

@@ -15,23 +15,19 @@ export class CvService {
     new Person(4, "dhaoudi", "yassine", 30, "", 33224, "Hacker"),
   ]
   private addedPersonnes : Person[] = []
-  private personnesSubject$ : BehaviorSubject<Person[]> = new BehaviorSubject(this.personnes)
   private selectedPerson$ : BehaviorSubject<Person> = new BehaviorSubject(new Person())
   http =inject(HttpClient)
 
   getPersonnes$(): Observable<Person[]> {
-    this.http.get<Person[]>('https://apilb.tridevs.net/api/personnes').pipe(
+    return this.http.get<Person[]>('https://apilb.tridevs.net/api/personnes').pipe(
       map((personnes) => {
         this.personnes = personnes;
-        this.personnesSubject$.next(personnes)
-        return personnes;
+        return [...personnes, ...this.addedPersonnes]
       }),
-      catchError(() => {
-        this.personnesSubject$.next(this.personnes)
-        return of(this.personnes);
+      catchError((e) => {
+        return of([...this.personnes, ...this.addedPersonnes]);
       })
-    );
-    return this.personnesSubject$.asObservable()
+    )
   }
 
   deletehttpPersonne$(id : number){
@@ -66,11 +62,7 @@ export class CvService {
 
   addPersonne(personne: Person) {
     personne.id = this.personnes.length + 1;
-    // this.personnes.push(personne);
-    this.personnesSubject$.next([
-        ...this.personnesSubject$.value,
-        personne
-      ])   
+    this.addedPersonnes.push(personne);
   }
   deletePersonne(item: Person) {
     let index = this.personnes.indexOf(item);
